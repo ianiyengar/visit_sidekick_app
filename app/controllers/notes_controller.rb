@@ -24,12 +24,16 @@ class NotesController < ApplicationController
     render json: note.as_json
   end
 
-  # ADD CHECK BOXES
   def update
     note = Note.find_by(id: params[:id])
     note.client_id = params[:client_id] || note.client_id
     note.date = params[:date] || note.date
     note.content = params[:content] || note.content
+    note.content = params[:content] || note.content
+    note.pronunciations = params[:pronunciations] || note.pronunciations
+    note.reach = params[:reach] || note.reach
+    note.metgoal = params[:metgoal] || note.metgoal
+    note.needswork = params[:needswork] || note.needswork
     note.save
     render json: note.as_json
   end
