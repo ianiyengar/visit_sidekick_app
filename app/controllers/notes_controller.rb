@@ -9,6 +9,11 @@ class NotesController < ApplicationController
       client_id: params[:client_id],
       date: params[:date],
       content: params[:content],
+      name: params[:name],
+      pronunciations: params[:pronunciations],
+      reach: params[:reach],
+      metgoal: params[:metgoal],
+      needswork: params[:needswork],
     )
     note.save
     render json: note.as_json
@@ -19,6 +24,7 @@ class NotesController < ApplicationController
     render json: note.as_json
   end
 
+  # ADD CHECK BOXES
   def update
     note = Note.find_by(id: params[:id])
     note.client_id = params[:client_id] || note.client_id
